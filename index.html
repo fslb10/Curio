@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1CB0F6" />
+  <title>Curio</title>
+</head>
+<body>
+  <div id="app">
+    <!-- HUB -->
+    <section id="screen-hub" class="screen" aria-label="Lessons">
+      <header class="hub-topbar">
+        <button id="btn-avatar" class="avatar-btn" aria-label="Edit avatar">
+          <span id="avatar-slot" class="avatar-slot"></span>
+        </button>
+        <div class="hub-title-wrap">
+          <h1 class="hub-title">Curio</h1>
+          <p class="hub-tagline">Learn something new today.</p>
+        </div>
+        <div class="hub-actions">
+          <button id="btn-mute" class="icon-btn" aria-label="Toggle sound" aria-pressed="false">
+            <span id="icon-mute" aria-hidden="true">&#128266;</span>
+          </button>
+          <button id="btn-gear" class="icon-btn" aria-label="Settings">
+            <span aria-hidden="true">&#9881;</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="hub-main">
+        <div id="lesson-grid" class="lesson-grid"></div>
+      </main>
+    </section>
+
+    <!-- AVATAR PICKER -->
+    <section id="screen-avatar" class="screen" aria-label="Avatar picker">
+      <header class="lesson-topbar">
+        <button id="btn-avatar-back" class="icon-btn" aria-label="Back">
+          <span aria-hidden="true">&#8592;</span>
+        </button>
+        <h2 class="lesson-title">Make your avatar</h2>
+        <span class="topbar-spacer"></span>
+      </header>
+      <main class="avatar-main" id="avatar-main"></main>
+    </section>
+
+    <!-- LESSON -->
+    <section id="screen-lesson" class="screen" aria-label="Lesson">
+      <header class="lesson-topbar">
+        <button id="btn-exit-lesson" class="icon-btn" aria-label="Exit lesson">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+        <div class="progress-track">
+          <div id="lesson-progress-segments" class="progress-segments"></div>
+        </div>
+        <span class="topbar-spacer"></span>
+      </header>
+      <main class="lesson-main">
+        <div id="lesson-body" class="lesson-body"></div>
+      </main>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screen-quiz" class="screen" aria-label="Quiz">
+      <header class="lesson-topbar">
+        <button id="btn-exit-quiz" class="icon-btn" aria-label="Exit quiz">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+        <div class="progress-track">
+          <div class="progress-bar"><div id="quiz-progress-fill" class="progress-fill"></div></div>
+          <span id="quiz-progress-label" class="progress-label"></span>
+        </div>
+        <span class="topbar-spacer"></span>
+      </header>
+      <main class="lesson-main">
+        <div id="quiz-body" class="lesson-body"></div>
+      </main>
+    </section>
+
+    <!-- SCORE -->
+    <section id="screen-score" class="screen" aria-label="Your score">
+      <main class="score-main">
+        <div class="score-content">
+          <div class="score-emoji" id="score-emoji">&#127881;</div>
+          <h2 class="score-title" id="score-title">You finished!</h2>
+          <p class="score-subtitle" id="score-subtitle"></p>
+          <div class="score-stars" id="score-stars" aria-label="Stars earned"></div>
+          <div class="score-fraction" id="score-fraction"></div>
+          <div class="score-actions">
+            <button class="btn btn-primary" id="btn-score-replay">Try again</button>
+            <button class="btn btn-secondary" id="btn-score-hub">Back to lessons</button>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- MODALS -->
+    <div id="modal-exit" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-exit-title">
+      <div class="modal-card">
+        <h3 id="modal-exit-title" class="modal-title">Leave the lesson?</h3>
+        <p class="modal-body">Your progress so far will be saved.</p>
+        <div class="modal-actions">
+          <button id="modal-exit-cancel" class="btn btn-secondary">Stay</button>
+          <button id="modal-exit-confirm" class="btn btn-primary">Leave</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-reset" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title">
+      <div class="modal-card">
+        <h3 id="modal-reset-title" class="modal-title">Reset all progress?</h3>
+        <p class="modal-body">This clears all your stars and progress. This cannot be undone.</p>
+        <div class="modal-actions">
+          <button id="modal-reset-cancel" class="btn btn-secondary">Cancel</button>
+          <button id="modal-reset-confirm" class="btn btn-danger">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
