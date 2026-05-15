@@ -1,0 +1,350 @@
+/* MCQ, TF, Match, FillBlank, Sequence components */
+
+/* ===== Choice list, used by MCQ ===== */
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  min-height: 60px;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  font-weight: 600;
+}
+.choice:hover:not([disabled]) { border-color: var(--color-primary); background: rgba(28,176,246,0.04); }
+.choice:active:not([disabled]) { transform: scale(0.98); }
+.choice[disabled] { cursor: not-allowed; }
+
+.choice-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #F1F5F7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-muted);
+  flex: 0 0 auto;
+  text-transform: uppercase;
+}
+
+.choice.is-correct {
+  border-color: var(--color-correct);
+  background: rgba(102,191,57,0.1);
+  animation: correctPop 0.45s ease;
+}
+.choice.is-correct .choice-mark {
+  background: var(--color-correct);
+  color: #fff;
+}
+
+.choice.is-wrong {
+  border-color: var(--color-wrong);
+  background: rgba(255,107,107,0.08);
+  animation: gentleShake 0.4s ease;
+}
+.choice.is-wrong .choice-mark {
+  background: var(--color-wrong);
+  color: #fff;
+}
+
+/* ===== TF buttons ===== */
+
+.tf-row {
+  display: flex;
+  gap: 12px;
+}
+
+.tf-btn {
+  flex: 1;
+  padding: 22px 14px;
+  min-height: 90px;
+  border-radius: 18px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.tf-btn:hover:not([disabled]) { border-color: var(--color-primary); }
+.tf-btn:active:not([disabled]) { transform: scale(0.97); }
+.tf-btn[disabled] { cursor: not-allowed; }
+
+.tf-emoji {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.tf-btn.is-correct {
+  background: rgba(102,191,57,0.12);
+  border-color: var(--color-correct);
+  color: var(--color-correct);
+  animation: correctPop 0.45s ease;
+}
+.tf-btn.is-wrong {
+  background: rgba(255,107,107,0.1);
+  border-color: var(--color-wrong);
+  color: var(--color-wrong);
+  animation: gentleShake 0.4s ease;
+}
+
+/* ===== Match game ===== */
+
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.match-col h4 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.match-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.match-tile {
+  padding: 14px 12px;
+  min-height: 60px;
+  border-radius: 14px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease, opacity 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.match-tile:active:not([disabled]) { transform: scale(0.97); }
+.match-tile:hover:not([disabled]) { border-color: var(--color-primary); }
+.match-tile[disabled] { cursor: not-allowed; }
+
+.match-tile.is-selected {
+  border-color: var(--color-primary);
+  background: rgba(28,176,246,0.1);
+}
+
+.match-tile.is-paired {
+  opacity: 0.55;
+  border-color: var(--color-correct);
+  background: rgba(102,191,57,0.08);
+}
+
+.match-tile.is-flash-correct {
+  background: rgba(102,191,57,0.2);
+  border-color: var(--color-correct);
+  animation: correctPop 0.4s ease;
+}
+
+.match-tile.is-flash-wrong {
+  background: rgba(255,107,107,0.15);
+  border-color: var(--color-wrong);
+  animation: gentleShake 0.4s ease;
+}
+
+/* ===== Fill in the blank ===== */
+
+.fillblank-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fillblank-input {
+  width: 100%;
+  padding: 16px 18px;
+  min-height: 56px;
+  border-radius: 16px;
+  border: 2px solid var(--color-border);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.fillblank-input:focus {
+  border-color: var(--color-primary);
+  background: #fff;
+}
+.fillblank-input.is-correct {
+  border-color: var(--color-correct);
+  background: rgba(102,191,57,0.08);
+}
+.fillblank-input.is-wrong {
+  border-color: var(--color-wrong);
+  background: rgba(255,107,107,0.08);
+  animation: gentleShake 0.4s ease;
+}
+
+.fillblank-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fillblank-row .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+.fillblank-hint {
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,194,0,0.12);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(255,194,0,0.3);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  animation: bounceIn 0.25s ease;
+}
+
+.fillblank-hint-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ===== Sequence ===== */
+
+.sequence-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sequence-section h4 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.sequence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 60px;
+}
+
+.sequence-list.is-empty::after {
+  content: "Tap items below to put them in order.";
+  display: block;
+  text-align: center;
+  padding: 18px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-muted);
+  background: rgba(28,176,246,0.05);
+  border: 2px dashed var(--color-border);
+  border-radius: 14px;
+}
+
+.sequence-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  min-height: 56px;
+  border-radius: 14px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+}
+.sequence-item:active:not([disabled]) { transform: scale(0.98); }
+.sequence-item:hover:not([disabled]) { border-color: var(--color-primary); }
+.sequence-item[disabled] { cursor: not-allowed; opacity: 0.6; }
+
+.sequence-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 14px;
+  flex: 0 0 auto;
+}
+
+.sequence-text {
+  flex: 1;
+}
+
+.sequence-item.is-correct {
+  border-color: var(--color-correct);
+  background: rgba(102,191,57,0.08);
+  animation: correctPop 0.45s ease;
+}
+.sequence-item.is-wrong {
+  border-color: var(--color-wrong);
+  background: rgba(255,107,107,0.08);
+  animation: gentleShake 0.4s ease;
+}
+.sequence-item.is-correct .sequence-num { background: var(--color-correct); }
+.sequence-item.is-wrong .sequence-num { background: var(--color-wrong); }
