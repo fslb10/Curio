@@ -1,0 +1,96 @@
+/* Curio — design tokens */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  /* dark default */
+  --bg-deep: #0A0A1F;
+  --bg-surface: #14132E;
+  --bg-elevated: #1F1D44;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text: #F4F4FF;
+  --text-dim: #A5A4C9;
+  --text-muted: #6F6E94;
+
+  --pink: #FF3B9A;
+  --purple: #8B5CF6;
+  --cyan: #22D3EE;
+  --yellow: #FCD34D;
+  --green: #34D399;
+  --orange: #FB923C;
+  --blue: #60A5FA;
+  --rose: #F472B6;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow-pink: 0 0 32px rgba(255, 59, 154, 0.4);
+  --shadow-glow-cyan: 0 0 32px rgba(34, 211, 238, 0.4);
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.curio-light {
+  --bg-deep: #F8F6FF;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-card: rgba(20, 19, 46, 0.03);
+  --bg-card-hover: rgba(20, 19, 46, 0.06);
+  --border: rgba(20, 19, 46, 0.08);
+  --border-strong: rgba(20, 19, 46, 0.16);
+  --text: #0A0A1F;
+  --text-dim: #4A4870;
+  --text-muted: #8786A8;
+  --shadow-card: 0 4px 24px rgba(20, 19, 46, 0.08);
+}
+
+.curio-app {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg-deep);
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.curio-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.curio-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reusable scrollable region inside iOS frame */
+.curio-scroll {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.curio-scroll::-webkit-scrollbar { display: none; }
+
+/* twinkle animation for stars / mascot eyes */
+@keyframes curio-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes curio-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes curio-spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes curio-orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes curio-pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
